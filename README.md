@@ -1,15 +1,15 @@
 # parrotfish_analyses
 Evolutionary analyses of the Parrotfish genome
 
-## Downloading proteomes
+## Preparing proteomes
 
-## Longest isoforms
+### Longest isoforms
 
 **Ensembl, RefSeq, and corkwing** proteomes filtered with OrthoFinder script `primary_transcript.py`
 
 ## OrthoFinder
 
-## Annotate orthogroups
+### Annotate orthogroups
 
 First, account for Ensembl IDs that have been replaced by Gene IDs by OrthoFinder:
 ```
@@ -28,3 +28,19 @@ python3 src/4_annotate_orthogroups.py \
 	~/Dropbox/parrotfish/02_working/2110_orthofinder_noAbInit/Results_Sep29/Orthogroups/Orthogroups.tsv \
 	~/Dropbox/parrotfish/02_working/2110_orthofinder_noAbInit/headers/
 ```
+
+## Phylogenies
+
+### Prepare single-copy group sequences
+
+
+## CAFE
+
+### Prepare input files
+
+Concatenate orthogroup descriptions with gene counts:
+```
+src/5_prep_gene_counts.R
+```
+
+Make ultrametric tree:
