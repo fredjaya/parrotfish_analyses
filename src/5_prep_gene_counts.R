@@ -10,3 +10,5 @@ cafe_input <-
   full_join(gene_counts, by = 'Orthogroup') %>%
   rename(`Family ID` = Orthogroup) %>%
   select(-Total)
+
+write.table(cafe_input, "cafe_gene_counts.tsv", quote = F, sep = '\t', row.names = F)

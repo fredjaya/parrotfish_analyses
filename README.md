@@ -1,6 +1,15 @@
 # parrotfish_analyses
 Evolutionary analyses of the Parrotfish genome
 
+## Dependencies
+- perl
+- python3.7
+- MAFFT v7.487
+- trimAl v1.4
+- IQ-TREE v2.1.4-beta
+- BEAST v2.6.3
+- AMAS v1.0
+
 ## Preparing proteomes
 
 ### Longest isoforms
@@ -33,6 +42,32 @@ python3 src/4_annotate_orthogroups.py \
 
 ### Prepare single-copy group sequences
 
+Align all single-copy orthogroups with MAFFT and remove poorly aligned regions with TrimAl:
+```
+src/5_align_scos.sh
+src/6_trim_scos.sh
+```
+1771 SCOs in total.
+
+Rename all sequences with species names:
+```
+src/7_rename_seqs.sh
+
+# Check sequences renamed correctly:
+for i in *.fa; do grep '>' $i; done | sort | uniq -c
+```
+
+Concatenate and generate partitions file:
+```
+src/8_concat.sh
+```
+
+### Tree inference
+
+Run IQ-TREE and BEAST:
+```
+src/9_iqtree.sh
+```
 
 ## CAFE
 
