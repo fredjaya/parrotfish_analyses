@@ -4,11 +4,13 @@ Evolutionary analyses of the Parrotfish genome
 ## Dependencies
 - perl
 - python3.7
+- OrthoFinder v2.4.0
 - MAFFT v7.487
 - trimAl v1.4
 - IQ-TREE v2.1.4-beta
 - BEAST v2.6.3
 - AMAS v1.0
+- FigTree
 
 ## Preparing proteomes
 
@@ -67,6 +69,7 @@ src/8_concat.sh
 Run IQ-TREE and BEAST:
 ```
 src/9_iqtree.sh
+src/10_beast.sh
 ```
 
 ## CAFE
@@ -75,7 +78,30 @@ src/9_iqtree.sh
 
 Concatenate orthogroup descriptions with gene counts:
 ```
-src/5_prep_gene_counts.R
+src/12_prep_gene_counts.R
 ```
 
-Make ultrametric tree:
+Make OrthoFinder species tree ultrametric
+```
+src/13_iqtree2ultrametric.sh
+```
+
+### Running CAFE
+
+Run CAFE:
+```
+src/14_cafe.sh
+```
+
+```
+# 423/14995 (2.9%) orthogroups with a signficantly fast evolving branch
+grep -c '*' Base_asr.tre
+
+# 211 orthogroups with significant changes on PF branch
+grep -Ec '<2>\* Base_asr.tre'
+
+# Subset orthogroups where PF branch == significant
+grep -c '<2>\*' Base_asr.tre > pf_significant.tre
+```
+
+
