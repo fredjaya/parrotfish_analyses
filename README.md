@@ -93,6 +93,7 @@ Run CAFE:
 src/14_cafe.sh
 ```
 
+Investigate branches that tested significant for expansion/contraction:
 ```
 # 423/14995 (2.9%) orthogroups with a signficantly fast evolving branch
 grep -c '*' Base_asr.tre
@@ -104,4 +105,30 @@ grep -Ec '<2>\* Base_asr.tre'
 grep -c '<2>\*' Base_asr.tre > pf_significant.tre
 ```
 
+## Positive selection analyses
 
+### Convert single-copy groups to CDS
+
+Downloaded *.cds.all sequences from Ensembl.
+
+Some text wrangling and parsing to get headers in the right format:
+```
+# Get list of all single-copy orthogroups (n = 1771)
+ls Single_Copy_Orthologue_Sequences/ | sed 's/\.fa//' > sco.list
+
+# Subset SCOs in Orthogroups.tsv
+head -1 Orthogroups.tsv > Orthogroups_SCO.tsv
+for i in `cat sco.list`; do grep $i Orthogroups.tsv >> Orthogroups_SCO.tsv; done
+
+# Fix headers according to Ensembl, RefSeq, FGENESH++
+# Note: not all RefSeq sequence headers contain protein IDs
+# Chelmon = 173; Humphead = 66; Spotty = 139
+src/16_fix_cds_headers.sh
+```
+
+Finally, write CDS sequences:
+```
+# Attempt to convert RefSeq ID to Ensembl Transcript ID for Ballan wrasse but not all headers exist; functions written in 17_fix_cds_headers.py if complete list found
+# Also Sunfish seem irredeemable for now
+src/17_get_cds.py
+```
