@@ -3,10 +3,10 @@ Evolutionary analyses of the Parrotfish genome
 
 ## Table of contents
 [Dependencies](#dependencies)  
-[Orthology assigment](#orthology-assignment)
-[Phylogenies](#phylogenies)
-[CAFE](#cafe)
-[Positive selection](#positive-selection)
+[Orthology assigment](#orthology-assignment)  
+[Phylogenies](#phylogenies)  
+[CAFE](#cafe)  
+[Positive selection](#positive-selection)  
 
 ## Dependencies
 **Dependencies outdated**
@@ -25,8 +25,6 @@ Evolutionary analyses of the Parrotfish genome
 ### Preparing proteomes
 
 **Ensembl, RefSeq, and corkwing** proteomes filtered with OrthoFinder script `primary_transcript.py`
-
-<p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>
 
 ### OrthoFinder
 
@@ -52,7 +50,7 @@ python3 src/4_annotate_orthogroups.py \
 	~/Dropbox/parrotfish/02_working/2110_orthofinder_noAbInit/headers/
 ```
 
-<p align="right">(<a href="#parrotfish_analyses">back to top</a>)</p>
+<p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>
 
 ## Phylogenies
 
@@ -151,3 +149,5 @@ Finally, write CDS sequences:
 # Also Sunfish seem irredeemable for now
 src/17_get_cds.py
 ```
+
+<p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>
