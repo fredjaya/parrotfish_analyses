@@ -1,7 +1,10 @@
 # parrotfish_analyses
 Evolutionary analyses of the Parrotfish genome
 
+## Table of contents
+
 ## Dependencies
+**Dependencies outdated**
 - perl
 - python3.7
 - OrthoFinder v2.4.0
@@ -14,11 +17,13 @@ Evolutionary analyses of the Parrotfish genome
 
 ## Preparing proteomes
 
-### Longest isoforms
-
 **Ensembl, RefSeq, and corkwing** proteomes filtered with OrthoFinder script `primary_transcript.py`
 
+<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
+
 ## OrthoFinder
+
+Orthofinder ran with default settings.  
 
 ### Annotate orthogroups
 
@@ -33,12 +38,14 @@ Also Parrotfish/FGENESH++ headers:
 src/3_fix_pf_headers.sh
 ```
 
-Finally, annotate orthogroups:
+Finally, annotate orthogroups according to most common gene name/description:
 ```
 python3 src/4_annotate_orthogroups.py \
 	~/Dropbox/parrotfish/02_working/2110_orthofinder_noAbInit/Results_Sep29/Orthogroups/Orthogroups.tsv \
 	~/Dropbox/parrotfish/02_working/2110_orthofinder_noAbInit/headers/
 ```
+
+<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
 
 ## Phylogenies
 
@@ -66,11 +73,14 @@ src/8_concat.sh
 
 ### Tree inference
 
-Run IQ-TREE and BEAST:
+Run IQ-TREE for species tree:
 ```
 src/9_iqtree.sh
-src/10_beast.sh
 ```
+
+Run MCMCTree for divergence times - see [mcmctree_example](https://github.com/fredjaya/parrotfish_analyses/tree/main/mcmctree_example)
+
+<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
 
 ## CAFE
 
@@ -104,6 +114,8 @@ grep -Ec '<2>\* Base_asr.tre'
 # Subset orthogroups where PF branch == significant
 grep -c '<2>\*' Base_asr.tre > pf_significant.tre
 ```
+
+<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
 
 ## Positive selection analyses
 
