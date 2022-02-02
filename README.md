@@ -2,6 +2,11 @@
 Evolutionary analyses of the Parrotfish genome
 
 ## Table of contents
+[Dependencies](#dependencies)  
+[Orthology assigment](#orthology-assignment)
+[Phylogenies](#phylogenies)
+[CAFE](#cafe)
+[Positive selection](#positive-selection)
 
 ## Dependencies
 **Dependencies outdated**
@@ -15,13 +20,15 @@ Evolutionary analyses of the Parrotfish genome
 - AMAS v1.0
 - FigTree
 
-## Preparing proteomes
+## Orthology assignment
+
+### Preparing proteomes
 
 **Ensembl, RefSeq, and corkwing** proteomes filtered with OrthoFinder script `primary_transcript.py`
 
-<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
+<p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>
 
-## OrthoFinder
+### OrthoFinder
 
 Orthofinder ran with default settings.  
 
@@ -45,7 +52,7 @@ python3 src/4_annotate_orthogroups.py \
 	~/Dropbox/parrotfish/02_working/2110_orthofinder_noAbInit/headers/
 ```
 
-<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
+<p align="right">(<a href="#parrotfish_analyses">back to top</a>)</p>
 
 ## Phylogenies
 
@@ -80,7 +87,7 @@ src/9_iqtree.sh
 
 Run MCMCTree for divergence times - see [mcmctree_example](https://github.com/fredjaya/parrotfish_analyses/tree/main/mcmctree_example)
 
-<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
+<p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>
 
 ## CAFE
 
@@ -115,9 +122,9 @@ grep -Ec '<2>\* Base_asr.tre'
 grep -c '<2>\*' Base_asr.tre > pf_significant.tre
 ```
 
-<p align="right">(<a href="#parrotfish_analyses">[back to top]</a>)</p>
+<p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>
 
-## Positive selection analyses
+## Positive selection
 
 ### Convert single-copy groups to CDS
 
