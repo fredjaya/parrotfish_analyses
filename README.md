@@ -124,9 +124,9 @@ grep -c '<2>\*' Base_asr.tre > pf_significant.tre
 
 ## Positive selection
 
-### Convert single-copy groups to CDS
+### Get CDS for single-copy groups
 
-Downloaded *.cds.all sequences from Ensembl.
+Downloaded `*.cds.all` sequences from Ensembl.
 
 Some text wrangling and parsing to get headers in the right format:
 ```
@@ -148,6 +148,12 @@ Finally, write CDS sequences:
 # Attempt to convert RefSeq ID to Ensembl Transcript ID for Ballan wrasse but not all headers exist; functions written in 17_fix_cds_headers.py if complete list found
 # Also Sunfish seem irredeemable for now
 src/17_get_cds.py
+```
+
+### Codon-aware CDS alignment
+With MACSE:
+```
+src/19_macse.sh
 ```
 
 <p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>
