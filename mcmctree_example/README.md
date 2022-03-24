@@ -4,7 +4,7 @@
 
 Download mcmctree
 ```
-conda create -n paml -c bioconda
+conda create -n paml -c bioconda paml
 conda activate paml
 ```
 
