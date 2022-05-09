@@ -1,0 +1,12 @@
+#!/bin/bash                                              
+#PBS -l select=1:ncpus=1:mem=2GB                         
+#PBS -l walltime=03:00:00                                
+#PBS -P RDS-FSC-WholeGenomeAssembly-RW                   
+                                                         
+# USAGE: qsub -v "OG=OGnnnnnn, M=MA" codeml.pbs          
+                                                         
+module load paml                                         
+                                                         
+cd /scratch/WholeGenomeAssembly/codeml_pf/runs/${OG}-${M}
+                                                         
+codeml ${M}.ctl                                          

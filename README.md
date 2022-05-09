@@ -156,4 +156,73 @@ With MACSE:
 src/19_macse.sh
 ```
 
+Some incomplete codons with MACSE, try with hyphy aligner.
+
+Correct frameshifts and translate CDS sequences:
+```
+src/19_hyphy_pre.sh
+```
+
+Get alignments missing taxa due to poor quality/failed previous step:
+```
+for i in ${WORK}/*.fa_nuc.fas; do
+        name=`basename ${i} .fa_nuc.fas`
+        nseq=`grep '>' ${i} | wc -l`
+        echo -e "${name}\t${nseq}"
+done > pre-msa_nseqs.tsv
+
+awk '$2 < 14' pre-msa_nseqs.tsv | sort -k2 | wc -l
+```
+
+74/1771 alignments with incomplete taxa.  
+
+**TO-DO:** Go back and correct these alignments - re-run pre-msa.bf with other parameters.  
+Align translated protein sequences using MAFFT:
+```
+src/20_hyphy_mafft.sh
+```
+
+Realign CDS according to translated proteins:
+```
+src/21_hyphy_post.sh
+```
+
+Rename sequences:
+```
+7_rename_seqs.sh
+```
+Run HYPHY (aBSREL):
+**To-do: Run with codon substitution model**
+```
+src/22_absrel.sh
+```
+
+Running codeml
+
+Make directories for each sequence and model (MA, MA1) and prepare .ctl files
+```
+23_prep_codeml.sh
+
+# Ended up transferring to HPC, add symlinks of n14.tre and *.fa to each folder
+split -l 150 fa_list
+
+for fa in `cat $1`; do
+	echo $fa
+	qsub -v "OG=${fa}, M=A" codeml_alt.pbs
+done
+
+for fa in `cat $1`; do
+	echo $fa
+	qsub -v "OG=${fa}, M=A1" codeml_null.pbs
+done
+```
+
+1691 orthogroups successfully run with codeml.
+
+Parse codeml outputs
+```
+# Compare lnL values between models with LRT
+src/24_parse_lnl.sh
+```
+
 <p align="right">[<a href="#parrotfish_analyses">back to top</a>]</p>

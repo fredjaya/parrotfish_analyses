@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd /media/meep/GenomeAbyss/pf/dating/trimmed_scos
+#cd /media/meep/GenomeAbyss/pf/dating/trimmed_scos
 
 for i in *.fa; do
         sed -i -e 's/XP_0345.*/spotty/' \
@@ -18,7 +18,7 @@ for i in *.fa; do
         -e 's/ENSDARG.*/zebra/' \
         -e 's/ENSLAC.*/coelacanth/' \
         -e 's/ENSLOC.*/gar/' \
-		-e 's/ENSP00000.*/human/' \
+	-e 's/ENSP00001.*/human/' \
         -e 's/ENSG00000.*/human/' \
         -e 's/ENSORL.*/medaka/' \
         -e 's/ENSGAC.*/stickleback/' \
