@@ -83,5 +83,10 @@ if __name__ == '__main__':
     
     raw_ogs = load_orthogroups(args.orthogroups_tsv)
     gene_names = load_gene_names(raw_ogs, args.fasta_dir)
+
+    """ Original use (count major gene names) """
     majority_df = get_majority(gene_names)
     majority_df.to_csv("annotated_orthogroups.tsv", sep='\t')
+
+    """ Get only human names for GO term enrichment/annotation """
+    #gene_names.to_csv("gene_names.tsv", sep='\t')
